@@ -14,7 +14,12 @@
     }
   ],
   "require": {
-    "php": ">=7"
+    "php": ">=7",
+    "symfony/symfony": "3.*",
+    "doctrine/common": "2.7.*",
+    "doctrine/dbal": "2.7.*",
+    "doctrine/orm": "2.7.*",
+    "twig/twig": "1.*"
   },
   "autoload": {
     "psr-4": {
