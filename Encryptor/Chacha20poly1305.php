@@ -12,9 +12,8 @@ declare(strict_types=1);
  * @name Chacha20poly1305.php - 22-05-2018 10:03
  */
 
-namespace Encryptor;
+namespace BrandOriented\Encryption\Encryptor;
 
-use BrandOriented\Encryption\Encryptor\EncryptorInterface;
 use Symfony\Component\Security\Core\Exception\BadCredentialsException;
 
 /**

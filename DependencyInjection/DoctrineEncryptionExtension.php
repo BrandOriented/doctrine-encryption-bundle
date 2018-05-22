@@ -73,10 +73,6 @@ class DoctrineEncryptionExtension extends Extension
             throw new \RunTimeException('A KEY must be specified for DoctrineEncryptionBundle.');
         }
 
-        if (!isset($config[Configuration::ENCRYPTOR_IV])) {
-            throw new \RunTimeException('A IV must be specified for DoctrineEncryptionBundle.');
-        }
-
         if(!isset($config[Configuration::ENCRYPTOR_SUFFIX])) {
             throw new \RuntimeException('An encryption Suffix must be specified for DoctrineEncryptionBundle.');
         }

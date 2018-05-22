@@ -5,7 +5,7 @@
   "license": "MIT",
   "keywords": ["doctrine", "orm", "encryption", "symfony", "bundle", "gdpr"],
   "homepage": "https://github.com/BrandOriented/doctrine-encryption-bundle",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "authors": [
     {
       "name": "Matthew Thomas"
