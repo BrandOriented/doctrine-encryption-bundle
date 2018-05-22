@@ -1,9 +1,15 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: matthewthomas
- * Date: 12/11/2017
- * Time: 19:57
+declare(strict_types=1);
+/*
+ * This file is part of the BrandOriented package.
+ *
+ * (c) Brand Oriented sp. z o.o.
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ *
+ * @author Dominik Labudzinski <dominik@labudzinski.com>
+ * @name Chacha20poly1305.php - 22-05-2018 10:03
  */
 
 namespace BrandOriented\Encryption\Subscriber;
@@ -47,18 +53,29 @@ class DoctrineEncryptionSubscriber implements EventSubscriber
 
     /**
      * @param LifecycleEventArgs $args
+     * @throws \ReflectionException
      */
     public function prePersist(LifecycleEventArgs $args)
     {
         $entity = $args->getEntity();
         $this->processFields($entity);
-
     }
 
     /**
      * @param PreUpdateEventArgs $args
+     * @throws \ReflectionException
      */
     public function preUpdate(PreUpdateEventArgs $args)
+    {
+        $entity = $args->getEntity();
+        $this->processFields($entity);
+    }
+
+    /**
+     * @param LifecycleEventArgs $args
+     * @throws \ReflectionException
+     */
+    public function postLoad(LifecycleEventArgs $args)
     {
         $entity = $args->getEntity();
         $this->processFields($entity);
@@ -71,7 +88,8 @@ class DoctrineEncryptionSubscriber implements EventSubscriber
     {
         return array(
             Events::prePersist,
-            Events::preUpdate
+            Events::preUpdate,
+            Events::postLoad
         );
     }
 
@@ -80,9 +98,8 @@ class DoctrineEncryptionSubscriber implements EventSubscriber
      *
      * @param Object $entity doctrine entity
      *
-     * @throws \RuntimeException
-     *
      * @return object|null
+     * @throws \ReflectionException
      */
     public function processFields($entity)
     {
@@ -146,6 +163,7 @@ class DoctrineEncryptionSubscriber implements EventSubscriber
     /**
      * @param $entity
      * @param $embeddedProperty
+     * @throws \ReflectionException
      */
     private function handleEmbeddedAnnotation($entity, $embeddedProperty)
     {
@@ -180,10 +198,10 @@ class DoctrineEncryptionSubscriber implements EventSubscriber
      * @param string $className Class name
      *
      * @return array
+     * @throws \ReflectionException
      */
     public function getClassProperties(string $className): array
     {
-
         $reflectionClass = new \ReflectionClass($className);
         $properties = $reflectionClass->getProperties();
         $propertiesArray = array();

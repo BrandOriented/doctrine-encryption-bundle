@@ -10,6 +10,7 @@ namespace BrandOriented\Encryption\DependencyInjection;
 
 use BrandOriented\Encryption\Encryptor\EncryptorInterface;
 use BrandOriented\Encryption\Encryptor\OpenSSL;
+use Encryptor\Chacha20poly1305;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Definition;
@@ -24,6 +25,8 @@ class DoctrineEncryptionExtension extends Extension
 {
     /**
      * @inheritdoc
+     * @throws \ReflectionException
+     * @throws \Exception
      */
     public function load(array $configs, ContainerBuilder $container)
     {
@@ -42,8 +45,6 @@ class DoctrineEncryptionExtension extends Extension
 
         $definition = new Definition($config[Configuration::ENCRYPTOR_CLASS], [
             $container->getParameter('doctrine_encryption.key'),
-            $container->getParameter('doctrine_encryption.method'),
-            $container->getParameter('doctrine_encryption.iv'),
             $container->getParameter('doctrine_encryption.suffix')
 
         ]);
@@ -85,6 +86,7 @@ class DoctrineEncryptionExtension extends Extension
      * Checks the config and set defaults if none are applied
      *
      * @param array $config
+     * @throws \ReflectionException
      */
     private function setDefaults(array &$config)
     {
@@ -93,7 +95,7 @@ class DoctrineEncryptionExtension extends Extension
         }
 
         if (!isset($config[Configuration::ENCRYPTOR_CLASS])) {
-            $config[Configuration::ENCRYPTOR_CLASS] = OpenSSL::class;
+            $config[Configuration::ENCRYPTOR_CLASS] = Chacha20poly1305::class;
         } else {
             $refClass = new \ReflectionClass($config[Configuration::ENCRYPTOR_CLASS]);
             if (!$refClass->implementsInterface(EncryptorInterface::class)) {
