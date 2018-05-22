@@ -1,5 +1,5 @@
 {
-  "name": "matt9mg/doctrine-encryption-bundle",
+  "name": "brandoriented/doctrine-encryption-bundle",
   "type": "symfony-bundle",
   "description": "Doctrine encryption bundle for Symfony to aid with GDPR and general field encryption",
   "license": "MIT",
@@ -8,6 +8,9 @@
   "authors": [
     {
       "name": "Matthew Thomas"
+    },
+    {
+      "name": "Dominik Labudzinski"
     }
   ],
   "require": {
