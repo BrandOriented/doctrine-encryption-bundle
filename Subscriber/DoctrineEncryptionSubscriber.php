@@ -14,6 +14,7 @@ declare(strict_types=1);
 
 namespace BrandOriented\Encryption\Subscriber;
 
+use BrandOriented\Encryption\Encryptor\Chacha20poly1305;
 use Doctrine\Common\EventSubscriber;
 use Doctrine\Common\Annotations\Reader;
 use Doctrine\Common\Util\ClassUtils;
@@ -31,7 +32,7 @@ use BrandOriented\Encryption\Bridge\Bridge;
 class DoctrineEncryptionSubscriber implements EventSubscriber
 {
     /**
-     * @var Bridge
+     * @var Bridge|Chacha20poly1305
      */
     private $bridge;
 
@@ -78,7 +79,7 @@ class DoctrineEncryptionSubscriber implements EventSubscriber
     public function postLoad(LifecycleEventArgs $args)
     {
         $entity = $args->getEntity();
-        $this->processFields($entity);
+        $this->processFields($entity, false);
     }
 
     /**
@@ -101,7 +102,7 @@ class DoctrineEncryptionSubscriber implements EventSubscriber
      * @return object|null
      * @throws \ReflectionException
      */
-    public function processFields($entity)
+    public function processFields($entity, $encrypt = true)
     {
         if (strstr(get_class($entity), "Proxies")) {
             $realClass = ClassUtils::getClass($entity);
@@ -126,33 +127,33 @@ class DoctrineEncryptionSubscriber implements EventSubscriber
              * If contains the Encrypt tag, lets encrypt that property
              */
             if ($this->annReader->getPropertyAnnotation($refProperty, Encrypted::class)) {
-                /**
-                 * If it is public lets not use the getter/setter
-                 */
-                if ($refProperty->isPublic()) {
-                    $propName = $refProperty->getName();
-                    $entity->$propName = $this->bridge->encrypt($refProperty->getValue());
-                } else {
-                    //If private or protected check if there is an getter/setter for the property, based on the $methodName
-                    if ($reflectionClass->hasMethod($getter = 'get' . $methodName) && $reflectionClass->hasMethod($setter = 'set' . $methodName)) {
-                        //Get the information (value) of the property
-                        try {
-                            $getInformation = $entity->$getter();
-                        } catch (\Exception $e) {
-                            $getInformation = null;
-                        }
+                //If private or protected check if there is an getter/setter for the property, based on the $methodName
+                if ($reflectionClass->hasMethod($getter = 'get' . $methodName) && $reflectionClass->hasMethod($setter = 'set' . $methodName)) {
+                    //Get the information (value) of the property
+                    try {
+                        $getInformation = $entity->$getter();
+                    } catch (\Exception $e) {
+                        $getInformation = null;
+                    }
 
-                        if (!is_null($getInformation) && !empty($getInformation)) {
-                            $suffix = $this->bridge->getEncryptor()->getSuffix();
+                    if (!is_null($getInformation) && !empty($getInformation)) {
+                        $suffix = $this->bridge->getEncryptor()->getSuffix();
 
-                            $start = strlen($suffix) * -1;
-                            if (substr($entity->$getter(), $start) !== $suffix) {
-                                $currentPropValue = $this->bridge->encrypt($entity->$getter());
+                        $start = strlen($suffix) * -1;
+                        if($encrypt === false) {
+                            if (substr($getInformation, $start) === $suffix) {
+                                $getInformation = substr($getInformation, 0, $start);
+                                $currentPropValue = $this->bridge->decrypt($getInformation);
+                                $entity->$setter($currentPropValue);
+                            }
+                        } else {
+                            if (substr($getInformation, $start) !== $suffix) {
+                                $currentPropValue = $this->bridge->encrypt($getInformation);
                                 $entity->$setter($currentPropValue);
                             }
                         }
-
                     }
+
                 }
             }
         }
@@ -220,4 +221,3 @@ class DoctrineEncryptionSubscriber implements EventSubscriber
         return $propertiesArray;
     }
 }
-

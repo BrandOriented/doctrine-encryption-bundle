@@ -36,7 +36,7 @@ class Chacha20poly1305 implements EncryptorInterface
         $this->key = $key;
         $this->suffix = $suffix;
     }
-    
+
     const HASH_ALGORITHM = 'sha512';
     /**
      * Encrypts the given data and returns an encrypted version of it
@@ -92,6 +92,7 @@ class Chacha20poly1305 implements EncryptorInterface
             $nonce,
             $key
         );
+
         /**
          * Clear memory for variables
          */
@@ -99,13 +100,13 @@ class Chacha20poly1305 implements EncryptorInterface
         \Sodium\memzero($key);
         \Sodium\memzero($nonce);
         \Sodium\memzero($aad);
-        \Sodium\memzero($raw);
-        
+        \Sodium\memzero($data);
+
         if ($decrypted === false) {
             /**
              * Clear memory for variables
              */
-            
+
             throw new BadCredentialsException("Bad ciphertext");
         }
 
