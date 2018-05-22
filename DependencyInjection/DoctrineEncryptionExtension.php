@@ -8,9 +8,8 @@
 
 namespace BrandOriented\Encryption\DependencyInjection;
 
+use BrandOriented\Encryption\Encryptor\Chacha20poly1305;
 use BrandOriented\Encryption\Encryptor\EncryptorInterface;
-use BrandOriented\Encryption\Encryptor\OpenSSL;
-use Encryptor\Chacha20poly1305;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Definition;
