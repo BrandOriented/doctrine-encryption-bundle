@@ -6,14 +6,14 @@
  * Time: 15:52
  */
 
-namespace Matt9mg\Encryption\DependencyInjection;
+namespace BrandOriented\Encryption\DependencyInjection;
 
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
 
 /**
  * Class Configuration
- * @package Matt9mg\Encryption\DependencyInjection
+ * @package BrandOriented\Encryption\DependencyInjection
  */
 class Configuration implements ConfigurationInterface
 {

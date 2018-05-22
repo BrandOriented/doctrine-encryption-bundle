@@ -6,15 +6,15 @@
  * Time: 15:52
  */
 
-namespace Matt9mg\Encryption\Twig;
+namespace BrandOriented\Encryption\Twig;
 
-use Matt9mg\Encryption\Bridge\Bridge;
-use Matt9mg\Encryption\Encryptor\OpenSSL;
+use BrandOriented\Encryption\Bridge\Bridge;
+use BrandOriented\Encryption\Encryptor\OpenSSL;
 use Symfony\Bundle\FrameworkBundle\Tests\TestCase;
 
 /**
  * Class TwigTest
- * @package Matt9mg\Encryption\Twig
+ * @package BrandOriented\Encryption\Twig
  */
 class TwigTest extends TestCase
 {

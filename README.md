@@ -15,7 +15,7 @@ With GDPR becoming business critical here's a bundle that handles the data encry
     {
         $bundles = [
             ...
-            new Matt9mg\Encryption\DoctrineEncryptionBundle(),
+            new BrandOriented\Encryption\DoctrineEncryptionBundle(),
             ...
         ];
     }
@@ -47,7 +47,7 @@ matt9mg_doctrine_encryption:
 
 ### Using the encryption service in controller
 ```php
-use Matt9mg\Encryption\Bridge\Bridge;
+use BrandOriented\Encryption\Bridge\Bridge;
 
 $this->get(Bridge::class)->encrypt($string)
 $this->get(Bridge::class)->decrypt($string);
@@ -55,7 +55,7 @@ $this->get(Bridge::class)->decrypt($string);
 
 ### Entity Annotation
 ```php
-    use Matt9mg\Encryption\Annotation\Encrypted;
+    use BrandOriented\Encryption\Annotation\Encrypted;
 
     class User {
        /**
@@ -77,7 +77,7 @@ The above will auto encrypt on `prePersist` and `preUpdate`
 You'll notice there is no postLoad event to convert back to decrypted. Experience with doctrine is that as the entity is changed it adds it to the queue to be flushed. Say if you have an account with 1000 users each user would be decrypted meaning re saved. 
 
 ## How to add a custom Encryptor
-Create a class that extends ```Matt9mg\Encryption\Encryptor\EncryptorInterface```. Then register as mentioned in the above config.
+Create a class that extends ```BrandOriented\Encryption\Encryptor\EncryptorInterface```. Then register as mentioned in the above config.
 
 ## Tests
 Yes there a loads of lovely unit tests :)

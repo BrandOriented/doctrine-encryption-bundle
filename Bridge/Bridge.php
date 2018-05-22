@@ -6,14 +6,14 @@
  * Time: 07:56
  */
 
-namespace Matt9mg\Encryption\Bridge;
+namespace BrandOriented\Encryption\Bridge;
 
 
-use Matt9mg\Encryption\Encryptor\EncryptorInterface;
+use BrandOriented\Encryption\Encryptor\EncryptorInterface;
 
 /**
  * Class Bridge
- * @package Matt9mg\Encryption\Bridge
+ * @package BrandOriented\Encryption\Bridge
  */
 class Bridge
 {

@@ -6,10 +6,10 @@
  * Time: 23:40
  */
 
-namespace Matt9mg\Encryption;
+namespace BrandOriented\Encryption;
 
-use Matt9mg\Encryption\DependencyInjection\Compiler\EncryptionCompilerPass;
-use Matt9mg\Encryption\DependencyInjection\DoctrineEncryptionExtension;
+use BrandOriented\Encryption\DependencyInjection\Compiler\EncryptionCompilerPass;
+use BrandOriented\Encryption\DependencyInjection\DoctrineEncryptionExtension;
 use Symfony\Component\DependencyInjection\Compiler\PassConfig;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 use Symfony\Component\DependencyInjection\ContainerBuilder;

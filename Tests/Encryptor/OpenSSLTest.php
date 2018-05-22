@@ -6,14 +6,14 @@
  * Time: 15:52
  */
 
-namespace Matt9mg\Encryption\Tests\Encryptor;
+namespace BrandOriented\Encryption\Tests\Encryptor;
 
-use Matt9mg\Encryption\Encryptor\OpenSSL;
+use BrandOriented\Encryption\Encryptor\OpenSSL;
 use Symfony\Bundle\FrameworkBundle\Tests\TestCase;
 
 /**
  * Class OpenSSLTest
- * @package Matt9mg\Encryption\Tests\Encryptor
+ * @package BrandOriented\Encryption\Tests\Encryptor
  */
 class OpenSSLTest extends TestCase
 {

@@ -6,14 +6,14 @@
  * Time: 16:02
  */
 
-namespace Matt9mg\Encryption\DependencyInjection\Compiler;
+namespace BrandOriented\Encryption\DependencyInjection\Compiler;
 
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 
 /**
  * Class ServiceCompilerPass
- * @package Matt9mg\Encryption\DependencyInjection\Compiler
+ * @package BrandOriented\Encryption\DependencyInjection\Compiler
  */
 class EncryptionCompilerPass implements CompilerPassInterface
 {

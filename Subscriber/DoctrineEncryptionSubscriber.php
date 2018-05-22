@@ -6,7 +6,7 @@
  * Time: 19:57
  */
 
-namespace Matt9mg\Encryption\Subscriber;
+namespace BrandOriented\Encryption\Subscriber;
 
 use Doctrine\Common\EventSubscriber;
 use Doctrine\Common\Annotations\Reader;
@@ -15,12 +15,12 @@ use Doctrine\ORM\Event\LifecycleEventArgs;
 use Doctrine\ORM\Event\PreUpdateEventArgs;
 use Doctrine\ORM\Events;
 use Doctrine\ORM\Mapping\Embedded;
-use Matt9mg\Encryption\Annotation\Encrypted;
-use Matt9mg\Encryption\Bridge\Bridge;
+use BrandOriented\Encryption\Annotation\Encrypted;
+use BrandOriented\Encryption\Bridge\Bridge;
 
 /**
  * Class DoctrineEncryptionSubscriber
- * @package Matt9mg\Encryption\Subscriber
+ * @package BrandOriented\Encryption\Subscriber
  */
 class DoctrineEncryptionSubscriber implements EventSubscriber
 {

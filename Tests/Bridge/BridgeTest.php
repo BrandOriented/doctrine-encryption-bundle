@@ -6,15 +6,15 @@
  * Time: 15:52
  */
 
-namespace Matt9mg\Encryption\Tests\Bridge;
+namespace BrandOriented\Encryption\Tests\Bridge;
 
-use Matt9mg\Encryption\Bridge\Bridge;
-use Matt9mg\Encryption\Encryptor\OpenSSL;
+use BrandOriented\Encryption\Bridge\Bridge;
+use BrandOriented\Encryption\Encryptor\OpenSSL;
 use Symfony\Bundle\FrameworkBundle\Tests\TestCase;
 
 /**
  * Class BridgeTest
- * @package Matt9mg\Encryption\Tests\Bridge
+ * @package BrandOriented\Encryption\Tests\Bridge
  */
 class BridgeTest extends TestCase
 {

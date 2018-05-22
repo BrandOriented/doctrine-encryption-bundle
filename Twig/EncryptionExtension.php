@@ -6,13 +6,13 @@
  * Time: 14:27
  */
 
-namespace Matt9mg\Encryption\Twig;
+namespace BrandOriented\Encryption\Twig;
 
-use Matt9mg\Encryption\Bridge\Bridge;
+use BrandOriented\Encryption\Bridge\Bridge;
 
 /**
  * Class EncryptionExtension
- * @package Matt9mg\Encryption\Twig
+ * @package BrandOriented\Encryption\Twig
  */
 class EncryptionExtension extends \Twig_Extension
 {

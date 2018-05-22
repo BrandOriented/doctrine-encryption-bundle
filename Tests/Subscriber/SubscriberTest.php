@@ -6,18 +6,18 @@
  * Time: 15:52
  */
 
-namespace Matt9mg\Encryption\Subscriber;
+namespace BrandOriented\Encryption\Subscriber;
 
 use Doctrine\Common\Annotations\AnnotationReader;
 use Doctrine\ORM\Event\LifecycleEventArgs;
 use Doctrine\ORM\Event\PreUpdateEventArgs;
-use Matt9mg\Encryption\Annotation\Encrypted;
-use Matt9mg\Encryption\Bridge\Bridge;
-use Matt9mg\Encryption\Encryptor\OpenSSL;
+use BrandOriented\Encryption\Annotation\Encrypted;
+use BrandOriented\Encryption\Bridge\Bridge;
+use BrandOriented\Encryption\Encryptor\OpenSSL;
 use Symfony\Bundle\FrameworkBundle\Tests\TestCase;
 /**
  * Class SubscriberTest
- * @package Matt9mg\Encryption\Subscriber
+ * @package BrandOriented\Encryption\Subscriber
  */
 class SubscriberTest extends TestCase
 {

@@ -6,10 +6,10 @@
  * Time: 16:04
  */
 
-namespace Matt9mg\Encryption\DependencyInjection;
+namespace BrandOriented\Encryption\DependencyInjection;
 
-use Matt9mg\Encryption\Encryptor\EncryptorInterface;
-use Matt9mg\Encryption\Encryptor\OpenSSL;
+use BrandOriented\Encryption\Encryptor\EncryptorInterface;
+use BrandOriented\Encryption\Encryptor\OpenSSL;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Definition;
@@ -18,7 +18,7 @@ use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 
 /**
  * Class DoctrineEncryptionExtension
- * @package Matt9mg\Encryption\DependencyInjection
+ * @package BrandOriented\Encryption\DependencyInjection
  */
 class DoctrineEncryptionExtension extends Extension
 {

@@ -6,11 +6,11 @@
  * Time: 16:35
  */
 
-namespace Matt9mg\Encryption\Encryptor;
+namespace BrandOriented\Encryption\Encryptor;
 
 /**
  * Class OpenSSL
- * @package Matt9mg\Encryption\Encryptor
+ * @package BrandOriented\Encryption\Encryptor
  */
 class OpenSSL implements EncryptorInterface
 {

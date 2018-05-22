@@ -6,11 +6,11 @@
  * Time: 20:03
  */
 
-namespace Matt9mg\Encryption\Annotation;
+namespace BrandOriented\Encryption\Annotation;
 
 /**
  * Class Encrypted
- * @package Matt9mg\Encryption\Annotation
+ * @package BrandOriented\Encryption\Annotation
  * @Annotation
  */
 class Encrypted

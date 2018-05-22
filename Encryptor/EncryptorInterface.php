@@ -6,11 +6,11 @@
  * Time: 16:29
  */
 
-namespace Matt9mg\Encryption\Encryptor;
+namespace BrandOriented\Encryption\Encryptor;
 
 /**
  * Interface EncryptorInterface
- * @package Matt9mg\Encryption\Encryptor
+ * @package BrandOriented\Encryption\Encryptor
  */
 interface EncryptorInterface
 {
