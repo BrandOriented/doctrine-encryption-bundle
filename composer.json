@@ -3,8 +3,8 @@
   "type": "symfony-bundle",
   "description": "Doctrine encryption bundle for Symfony to aid with GDPR and general field encryption",
   "license": "MIT",
-  "keywords": ["doctrine", "orm", "encryption", "symfony", "bundle", "gdpr", "matt9mg"],
-  "homepage": "https://github.com/matt9mg/doctrine-encryption-bundle",
+  "keywords": ["doctrine", "orm", "encryption", "symfony", "bundle", "gdpr"],
+  "homepage": "https://github.com/BrandOriented/doctrine-encryption-bundle",
   "authors": [
     {
       "name": "Matthew Thomas"
@@ -18,7 +18,7 @@
   },
   "autoload": {
     "psr-4": {
-      "Matt9mg\\Encryption\\": ""
+      "BrandOriented\\Encryption\\": ""
     }
   }
 }

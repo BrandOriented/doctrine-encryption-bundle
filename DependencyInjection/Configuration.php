@@ -22,7 +22,7 @@ class Configuration implements ConfigurationInterface
     const ENCRYPTOR_CLASS = 'class';
     const ENCRYPTOR_IV = 'iv';
     const ENCRYPTOR_SUFFIX = 'suffix';
-    const ROOT = 'matt9mg_doctrine_encryption';
+    const ROOT = 'doctrine_encryption';
 
         /**
          * @return TreeBuilder

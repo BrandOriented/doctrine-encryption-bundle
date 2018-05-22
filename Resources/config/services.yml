@@ -12,7 +12,7 @@ services:
   BrandOriented\Encryption\Bridge\Bridge:
     public: true
     arguments:
-      - '@matt9mg_doctrine_encryption.encryptor'
+      - '@doctrine_encryption.encryptor'
 
   BrandOriented\Encryption\Twig\EncryptionExtension:
     arguments:

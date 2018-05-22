@@ -1,11 +1,9 @@
 # Doctrine Encryption Bundle
 
-[![SensioLabsInsight](https://insight.sensiolabs.com/projects/5ca1aae2-24ca-48f3-9e1d-e56230d387ac/small.png)](https://insight.sensiolabs.com/projects/5ca1aae2-24ca-48f3-9e1d-e56230d387ac)
-
 With GDPR becoming business critical here's a bundle that handles the data encryption layer.
 
 ## Installation
-```composer require matt9mg/doctrine-encryption-bundle dev-master```
+```composer require brandoriented/doctrine-encryption-bundle dev-master```
 
 ```php
    app/AppKernel.php
@@ -27,7 +25,7 @@ With GDPR becoming business critical here's a bundle that handles the data encry
 
 Basic configuration will take advantage of the encryption library provided
 ```yaml
-matt9mg_doctrine_encryption:
+doctrine_encryption:
   key: 'an encryption key'
   iv: 'an encryption iv'
   suffix: 'an encryption suffix'
@@ -35,7 +33,7 @@ matt9mg_doctrine_encryption:
 
 ***Full***
 ```yaml
-matt9mg_doctrine_encryption:
+doctrine_encryption:
   key: 'an encryption key'
   iv: 'an encryption iv'
   suffix: 'an encryption suffix'
