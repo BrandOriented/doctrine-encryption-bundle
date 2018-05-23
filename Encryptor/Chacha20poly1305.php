@@ -38,12 +38,14 @@ class Chacha20poly1305 implements EncryptorInterface
     }
 
     const HASH_ALGORITHM = 'sha512';
+
     /**
      * Encrypts the given data and returns an encrypted version of it
      * @param string $data
+     * @param string|null $nonce
      * @return string
      */
-    public function encrypt(string $data): string
+    public function encrypt(string $data, string $nonce = null): string
     {
         $key = hash(self::HASH_ALGORITHM, $this->key);
         $aad = hash(self::HASH_ALGORITHM, hash('whirlpool', $this->key));
@@ -77,7 +79,7 @@ class Chacha20poly1305 implements EncryptorInterface
      * @param string $data
      * @return string
      */
-    public function decrypt(string $data): string
+    public function decrypt(string $data, string $nonce = null): string
     {
         $key = hash(self::HASH_ALGORITHM, $this->key);
         $aad = hash(self::HASH_ALGORITHM, hash('whirlpool', $this->key));

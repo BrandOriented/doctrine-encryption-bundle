@@ -17,17 +17,19 @@ interface EncryptorInterface
     /**
      * Encrypts the given data and returns an encrypted version of it
      * @param string $data
+     * @param string|null $nonce
      * @return string
      */
-    public function encrypt(string $data): string;
+    public function encrypt(string $data, string $nonce = null): string;
 
     /**
      * Takes the encrypted data and returns the data decrypted
      *
      * @param string $data
+     * @param string|null $nonce
      * @return string
      */
-    public function decrypt(string $data): string;
+    public function decrypt(string $data, string $nonce = null): string;
 
     /**
      * Adds a suffix to the encryptor

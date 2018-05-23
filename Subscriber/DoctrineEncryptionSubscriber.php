@@ -14,6 +14,7 @@ declare(strict_types=1);
 
 namespace BrandOriented\Encryption\Subscriber;
 
+use BrandOriented\Encryption\Encryptor\Box;
 use BrandOriented\Encryption\Encryptor\Chacha20poly1305;
 use Doctrine\Common\EventSubscriber;
 use Doctrine\Common\Annotations\Reader;
@@ -32,7 +33,7 @@ use BrandOriented\Encryption\Bridge\Bridge;
 class DoctrineEncryptionSubscriber implements EventSubscriber
 {
     /**
-     * @var Bridge|Chacha20poly1305
+     * @var Bridge|Chacha20poly1305|Box
      */
     private $bridge;
 
@@ -99,6 +100,7 @@ class DoctrineEncryptionSubscriber implements EventSubscriber
      *
      * @param Object $entity doctrine entity
      *
+     * @param bool $encrypt
      * @return object|null
      * @throws \ReflectionException
      */
@@ -133,7 +135,7 @@ class DoctrineEncryptionSubscriber implements EventSubscriber
                     try {
                         $getInformation = $entity->$getter();
                     } catch (\Exception $e) {
-                        $getInformation = null;
+                        $getInformation = '';
                     }
 
                     if (!is_null($getInformation) && !empty($getInformation)) {
@@ -143,12 +145,12 @@ class DoctrineEncryptionSubscriber implements EventSubscriber
                         if($encrypt === false) {
                             if (substr($getInformation, $start) === $suffix) {
                                 $getInformation = substr($getInformation, 0, $start);
-                                $currentPropValue = $this->bridge->decrypt($getInformation);
+                                $currentPropValue = $this->bridge->decrypt($getInformation, $entity->getId());
                                 $entity->$setter($currentPropValue);
                             }
                         } else {
                             if (substr($getInformation, $start) !== $suffix) {
-                                $currentPropValue = $this->bridge->encrypt($getInformation);
+                                $currentPropValue = $this->bridge->encrypt($getInformation, $entity->getId());
                                 $entity->$setter($currentPropValue);
                             }
                         }

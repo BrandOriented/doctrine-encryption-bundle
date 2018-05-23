@@ -52,7 +52,7 @@ class OpenSSL implements EncryptorInterface
     /**
      * @inheritdoc
      */
-    public function encrypt(string $data): string
+    public function encrypt(string $data, string $nonce = null): string
     {
         return base64_encode(
             openssl_encrypt(
@@ -68,7 +68,7 @@ class OpenSSL implements EncryptorInterface
     /**
      * @inheritdoc
      */
-    public function decrypt(string $data): string
+    public function decrypt(string $data, string $nonce = null): string
     {
         $data = str_replace($this->getSuffix(), '', $data);
 

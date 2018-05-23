@@ -8,6 +8,7 @@
 
 namespace BrandOriented\Encryption\DependencyInjection;
 
+use BrandOriented\Encryption\Encryptor\Box;
 use BrandOriented\Encryption\Encryptor\Chacha20poly1305;
 use BrandOriented\Encryption\Encryptor\EncryptorInterface;
 use Symfony\Component\Config\FileLocator;
@@ -90,7 +91,7 @@ class DoctrineEncryptionExtension extends Extension
         }
 
         if (!isset($config[Configuration::ENCRYPTOR_CLASS])) {
-            $config[Configuration::ENCRYPTOR_CLASS] = Chacha20poly1305::class;
+            $config[Configuration::ENCRYPTOR_CLASS] = Box::class;
         } else {
             $refClass = new \ReflectionClass($config[Configuration::ENCRYPTOR_CLASS]);
             if (!$refClass->implementsInterface(EncryptorInterface::class)) {
